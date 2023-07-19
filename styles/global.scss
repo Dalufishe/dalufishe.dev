@@ -1,7 +1,10 @@
-
 // tailwindcss
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+  color: theme("colors.light");
+  background-color: theme("colors.primary");
+}
