@@ -7,18 +7,24 @@ import { AiFillGithub } from "react-icons/ai";
 import { BiLogoDiscordAlt } from "react-icons/bi";
 import HighLight from "../../_Global/ui/HighLight/HighLight";
 import Block from "../../_Global/ui/Block/Block";
+import { css } from "@emotion/css";
 
 const AboutME: FC = () => {
   return (
-    <div
-      className={classes("w-full", "flex flex-col items-center")}
-    >
+    <div className={classes("w-full", "flex flex-col items-center")}>
       <Image
         property="og:image"
         className={classes(
+          "cursor-pointer",
           "rounded-full",
-          "border-2 border-light",
-          "bg-red-50"
+          "border-[3px] border-light",
+          "bg-red-50",
+          css`
+            transition: transform 1s ease-out;
+            &:hover {
+              transform: rotate(360deg);
+            }
+          `
         )}
         src={MyImage}
         alt="this is my photo"

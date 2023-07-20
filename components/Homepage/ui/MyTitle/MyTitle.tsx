@@ -9,7 +9,7 @@ type Props = {
 
 const MyTitle: FC<Props> = (props: Props) => {
   return (
-    <h3
+    <h4
       className={classes(
         "text-2xl font-bold",
         "relative",
@@ -28,7 +28,7 @@ const MyTitle: FC<Props> = (props: Props) => {
       )}
     >
       {props.children}
-    </h3>
+    </h4>
   );
 };
 
