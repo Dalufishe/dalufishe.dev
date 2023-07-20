@@ -10,8 +10,12 @@ import Block from "../../_Global/ui/Block/Block";
 
 const AboutME: FC = () => {
   return (
-    <div className={classes("w-full", "flex flex-col items-center")}>
+    <div
+      property="og:description"
+      className={classes("w-full", "flex flex-col items-center")}
+    >
       <Image
+        property="og:image"
         className={classes(
           "rounded-full",
           "border-2 border-light",
