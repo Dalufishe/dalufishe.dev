@@ -32,7 +32,6 @@ const Navbar: FC = (props) => {
     >
       {/* Dalufishe */}
       <h1
-        property="og:title"
         className={classes("text-2xl font-bold", "cursor-pointer")}
       >
         Dalufishe

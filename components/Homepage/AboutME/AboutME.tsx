@@ -11,7 +11,6 @@ import Block from "../../_Global/ui/Block/Block";
 const AboutME: FC = () => {
   return (
     <div
-      property="og:description"
       className={classes("w-full", "flex flex-col items-center")}
     >
       <Image
