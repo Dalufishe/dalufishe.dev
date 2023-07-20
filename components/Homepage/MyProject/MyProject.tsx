@@ -47,7 +47,7 @@ const MyProject: FC = () => {
                 </TechCard>
                 <TechCard contained>
                   <a
-                    href="http://localhost:3001/speed-typing-web"
+                    href="https://dalufishe.github.io/speed-typing-web/"
                     target="_blank"
                   >
                     Site
@@ -71,15 +71,15 @@ const MyProject: FC = () => {
               </Flex>
               <Flex gap={3}>
                 <TechCard contained>
-                  <a href="https://dalufishe-dev.vercel.app/" target="_blank">
+                  <a
+                    href="https://github.com/Dalufishe/dalufishe.dev"
+                    target="_blank"
+                  >
                     Github
                   </a>
                 </TechCard>
                 <TechCard contained>
-                  <a
-                    href="https://dalufishe.github.io/speed-typing-web/#/p"
-                    target="_blank"
-                  >
+                  <a href="https://dalufishe-dev.vercel.app/" target="_blank">
                     Site
                   </a>
                 </TechCard>
