@@ -21,8 +21,8 @@ const MyTechStack: FC = () => {
       </MyTitle>
       <Block value={4} />
       <MyDescription>
-        I'm a Javascript enthusiast, familiar with Next.js, React.js, JQuery and
-        more.
+        I{"'"}m a Javascript enthusiast, familiar with Next.js, React.js, JQuery
+        and more.
       </MyDescription>
       <Block value={4} />
       <Flex fc gap={4}>
