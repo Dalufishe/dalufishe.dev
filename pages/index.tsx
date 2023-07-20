@@ -9,6 +9,7 @@ import MySocial from "../components/Homepage/MySocial/MySocail";
 import Flex from "../components/_Global/ui/Flex/Flex";
 import MyProject from "../components/Homepage/MyProject/MyProject";
 import { wrapper } from "../redux/store";
+import myImage from "../assets/me.png";
 
 const Home: NextPage = (props) => {
   return (
@@ -29,7 +30,7 @@ const Home: NextPage = (props) => {
           property="og:description"
           content="Love softwares, coding, games and more. Have fun :D"
         />
-        <meta property="og:image" content="" />
+        <meta property="og:image" content={myImage.src} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={classes("flex flex-col items-center", "relative")}>
