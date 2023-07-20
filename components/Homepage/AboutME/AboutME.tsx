@@ -18,13 +18,7 @@ const AboutME: FC = () => {
           "cursor-pointer",
           "rounded-full",
           "border-[3px] border-light",
-          "bg-red-50",
-          css`
-            transition: transform 1s ease-out;
-            &:hover {
-              transform: rotate(360deg);
-            }
-          `
+          "bg-red-50"
         )}
         src={MyImage}
         alt="this is my photo"
