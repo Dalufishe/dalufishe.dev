@@ -8,8 +8,9 @@ import Block from "../components/_Global/ui/Block/Block";
 import MySocial from "../components/Homepage/MySocial/MySocail";
 import Flex from "../components/_Global/ui/Flex/Flex";
 import MyProject from "../components/Homepage/MyProject/MyProject";
+import { wrapper } from "../redux/store";
 
-const Home: NextPage = () => {
+const Home: NextPage = (props) => {
   return (
     <div>
       <Head>
@@ -59,10 +60,8 @@ const Home: NextPage = () => {
   );
 };
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+export const getStaticProps = wrapper.getStaticProps(() => async () => {
+  return { props: {} };
+});
 
 export default Home;
