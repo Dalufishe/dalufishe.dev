@@ -7,7 +7,6 @@ import AboutME from "../components/Homepage/AboutME/AboutME";
 import MyTechStack from "../components/Homepage/MyTechStack/MyTechStack";
 import MyProject from "../components/Homepage/MyProject/MyProject";
 import Block from "../components/ui/Block/Block";
-import HaveFun from "../components/Homepage/HaveFun/HaveFun";
 
 const Home: NextPage = () => {
   return (
@@ -23,8 +22,6 @@ const Home: NextPage = () => {
         {/* 關於我 */}
         <AboutME />
         <Block value={15} />
-        {/* 遊樂場 */}
-        <HaveFun />
         {/* 我的項目 */}
         {/* <MyProject /> */}
         {/* 我的技術棧 */}
