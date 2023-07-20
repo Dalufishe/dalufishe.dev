@@ -1,7 +1,7 @@
 import { cx, css } from "@emotion/css";
 import React, { FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { classes } from "../../../utils/classes";
+import { classes } from "../../../../utils/classes";
 
 type Props = {
   className?: string;

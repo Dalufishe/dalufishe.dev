@@ -1,9 +1,8 @@
 import React, { useState, type FC } from "react";
-import { classes } from "../../../utils/classes";
-import { Listbox, Menu, RadioGroup, Tab } from "@headlessui/react";
-import { MdLanguage } from "react-icons/md";
+import { Listbox, Menu, RadioGroup, Tab, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { change_language_action } from "../../../redux/action/change_language.act";
+import { change_language_action } from "../../../../redux/action/change_language.act";
+import { classes } from "../../../../utils/classes";
 
 const menu = [{ name: "Home" }, { name: "Blog" }, { name: "Contact" }];
 
@@ -23,7 +22,7 @@ const Navbar: FC = (props) => {
         "bg-secondary",
         "w-full h-[56px]",
         "flex items-center justify-between",
-        "px-3"
+        "pl-6 pr-3"
       )}
     >
       {/* Dalufishe */}
@@ -32,11 +31,7 @@ const Navbar: FC = (props) => {
       </h1>
       {/* Menu */}
       <RadioGroup
-        className={classes(
-          "text-md font-bold",
-          "flex items-center",
-          "w-fit h-full"
-        )}
+        className={classes("text-md", "flex items-center", "w-fit h-full")}
         value={currentMenuItem}
         onChange={setCurrentMenuItem}
       >
@@ -75,20 +70,30 @@ const Navbar: FC = (props) => {
             <Listbox.Button className={classes("w-[75px] h-full")}>
               {language}
             </Listbox.Button>
-            <Listbox.Options
-              as="div"
-              className={classes("absolute", "top-[56px] right-0")}
+            <Transition
+              as={React.Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
             >
-              {languages.map((lan: any) => (
-                <Listbox.Option
-                  value={lan}
-                  key={lan}
-                  className={classes("ui-active:bg-secondary", "py-3 px-6")}
-                >
-                  <span>{lan}</span>
-                </Listbox.Option>
-              ))}
-            </Listbox.Options>
+              <Listbox.Options
+                as="div"
+                className={classes("absolute", "top-[56px] right-0")}
+              >
+                {languages.map((lan: any) => (
+                  <Listbox.Option
+                    value={lan}
+                    key={lan}
+                    className={classes("ui-active:bg-secondary", "py-3 px-6")}
+                  >
+                    <span>{lan}</span>
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </Transition>
           </Listbox>
         </RadioGroup.Option>
       </RadioGroup>

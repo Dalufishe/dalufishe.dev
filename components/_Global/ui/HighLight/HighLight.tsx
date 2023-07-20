@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { classes } from "../../../utils/classes";
 import { css } from "@emotion/css";
+import { classes } from "../../../../utils/classes";
 
 type Props = {
   children: any;

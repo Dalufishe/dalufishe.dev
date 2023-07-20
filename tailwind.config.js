@@ -16,8 +16,8 @@ module.exports = {
         primary: colors.gray[900],
         secondary: colors.gray[800],
         light: colors.white,
-        hightlight: colors.orange[500],
-        lesslight: colors.gray[400]
+        highlight: colors.orange[500],
+        lesslight: colors.gray[400],
       },
     },
   },

@@ -1,18 +1,16 @@
 import { FC } from "react";
 import { classes } from "../../../utils/classes";
 import Image from "next/image";
-import HighLight from "../../ui/HighLight/HighLight";
 import { tailwind_config } from "../../../utils/twconf2js";
-import Block from "../../ui/Block/Block";
 import MyImage from "../../../assets/me.png";
 import { AiFillGithub } from "react-icons/ai";
 import { BiLogoDiscordAlt } from "react-icons/bi";
+import HighLight from "../../.Global/ui/HighLight/HighLight";
+import Block from "../../.Global/ui/Block/Block";
 
 const AboutME: FC = () => {
   return (
-    <div
-      className={classes("w-full", "flex flex-col items-center")}
-    >
+    <div className={classes("w-full", "flex flex-col items-center")}>
       <Image
         className={classes(
           "rounded-full",
@@ -25,21 +23,21 @@ const AboutME: FC = () => {
         height={200}
       />
       <Block value={5} />
-      <h2 className={classes("text-2xl")}>
+      <h2 className={classes("text-3xl")}>
         A{" "}
         <HighLight
           type="underline"
-          color={tailwind_config.theme.colors.hightlight}
+          color={tailwind_config.theme.colors.highlight}
         >
           Full Stack
         </HighLight>{" "}
         Web Developer
       </h2>
-      <Block value={1.5} />
-      <h3 className="text-xl">
+      <Block value={2} />
+      <h3 className="text-2xl">
         love softwares, coding, games and more. Have fun :D
       </h3>
-      <Block value={2} />
+      <Block value={3} />
       <ul className="flex gap-2 text-2xl text-lesslight">
         <li>{<AiFillGithub />}</li>
         <li>{<BiLogoDiscordAlt />}</li>
