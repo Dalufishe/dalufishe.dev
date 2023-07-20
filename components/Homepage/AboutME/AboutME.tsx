@@ -23,7 +23,7 @@ const AboutME: FC = () => {
         height={200}
       />
       <Block value={5} />
-      <h2 className={classes("text-3xl")}>
+      <h2 className={classes("text-3xl", "text-center")}>
         A{" "}
         <HighLight
           type="underline"
@@ -34,7 +34,7 @@ const AboutME: FC = () => {
         Web Developer
       </h2>
       <Block value={2} />
-      <h3 className="text-2xl">
+      <h3 className="text-2xl text-center">
         love softwares, coding, games and more. Have fun :D
       </h3>
       <Block value={3} />
