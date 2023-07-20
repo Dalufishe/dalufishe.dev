@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         <AboutME />
         <Block value={15} />
         <main className={classes("w-[85%]")}>
-          <Flex is gap={3}>
+          <Flex is gap={3} fw>
             {/* 我的技術棧 */}
             <MyTechStack />
             {/* 我的項目 */}

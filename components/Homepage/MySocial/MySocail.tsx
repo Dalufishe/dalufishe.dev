@@ -16,7 +16,7 @@ type Props = {};
 
 const MySocial: FC<Props> = (props: Props) => {
   return (
-    <MyContainer className={classes("w-[33%]")}>
+    <MyContainer className={classes("w-full md:w-[49%] lg:w-[32%]")}>
       <MyTitle color={tailwind_config.theme.colors.highlight}>Social</MyTitle>
       <Block value={4} />
       <MyDescription>

@@ -15,7 +15,7 @@ import { tailwind_config } from "../../../utils/twconf2js";
 
 const MyProject: FC = () => {
   return (
-    <MyContainer className={classes("w-[33%]")}>
+    <MyContainer className={classes("w-full md:w-[49%] lg:w-[32%]")}>
       <MyTitle color={tailwind_config.theme.colors.highlight}>Projects</MyTitle>
       <Block value={4} />
       <MyDescription>
@@ -31,7 +31,7 @@ const MyProject: FC = () => {
           title="Speed Typing Web"
           description="A free, feature rich website to practice typing. It's an open source project on github."
           extras={
-            <Flex jb className="my-1 mr-1 mt-1">
+            <Flex jb className="my-1 mr-1 mt-1" fw>
               <Flex gap={3}>
                 <TechCard>React</TechCard>
                 <TechCard>JavaScript</TechCard>
@@ -64,7 +64,7 @@ const MyProject: FC = () => {
           title="Dalufishe.dev"
           description="My personal homepage."
           extras={
-            <Flex jb className="my-1 mr-1 mt-1">
+            <Flex jb className="my-1 mr-1 mt-1" fw>
               <Flex gap={3}>
                 <TechCard>Next.js</TechCard>
                 <TechCard>TypeScript</TechCard>

@@ -47,11 +47,13 @@ const Navbar: FC = (props) => {
               as={Link}
               href={menuitem.href}
               className={classes(
+                //
                 "cursor-pointer",
                 "hover:bg-primary",
                 "w-full h-full",
                 "px-6",
-                "flex items-center"
+                "items-center",
+                "hidden sm:flex"
               )}
               key={menuitem.name}
               value={menuitem}

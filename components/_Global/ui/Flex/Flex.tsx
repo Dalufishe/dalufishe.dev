@@ -10,6 +10,7 @@ type FlexProps = {
   is?: boolean;
   ic?: boolean;
   ie?: boolean;
+  fw?: boolean;
   gap?: number;
 };
 
@@ -19,7 +20,7 @@ type Props = {
 } & FlexProps;
 
 const Flex: FC<Props> = (props: Props) => {
-  const { fc, jb, jc, je, is, ic, ie } = props;
+  const { fc, jb, jc, je, is, ic, ie, fw } = props;
   return (
     <div
       className={classes(
@@ -31,6 +32,7 @@ const Flex: FC<Props> = (props: Props) => {
         is ? "items-start" : "",
         ic ? "items-center" : "",
         ie ? "items-end" : "",
+        fw ? "flex-wrap" : "",
         css`
           gap: ${(props.gap as number) * 4}px;
         `,
