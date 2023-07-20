@@ -1,108 +1,97 @@
 import React, { FC } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { SiNextdotjs, SiTypescript } from "react-icons/si";
+import { BiLogoJava } from "react-icons/bi";
+import { GrMysql } from "react-icons/gr";
+import { TbWorldWww } from "react-icons/tb";
+import TechCard from "./TechCard/TechCard";
+import MyContainer from "../ui/MyContainer/MyContainer";
+import MyTitle from "../ui/MyTitle/MyTitle";
+import Block from "../../_Global/ui/Block/Block";
+import MyDescription from "../ui/MyDescription/MyDescription";
+import Flex from "../../_Global/ui/Flex/Flex";
+import MyItembox from "../ui/MyItembox/MyItembox";
 import { classes } from "../../../utils/classes";
-import Image from "next/image";
-import myBlogImage from "./assets/myblog.png";
-import Block from "../../ui/Block/Block";
+import { tailwind_config } from "../../../utils/twconf2js";
 
 const MyProject: FC = () => {
   return (
-    <div className={classes("w-full", "flex flex-col items-center")}>
-      <Swiper
-        className={classes("w-[65%]")}
-        spaceBetween={33}
-        slidesPerView={3}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
-        <SwiperSlide>
-          <div
-            className={classes(
-              "bg-secondary",
-              "h-[400px]",
-              "rounded-lg",
-              "flex flex-col items-center",
-              "p-3",
-            )}
-          >
-            {/* Image */}
-            <Image
-              src={myBlogImage}
-              alt="my-blog-image"
-              width={400}
-              height={400}
-            />
-            <Block value={3} />
-            {/* Title */}
-            <h3 className={classes("text-xl")}>My Blog</h3>
-            <Block value={2} />
-            {/* Description */}
-            <h5 className={classes("text-md text-lesslight")}>
-              最近發現自己把一些用了很久的工具換成一些新的酷東西了，所以來學一些其他的部落格作者一樣寫一篇自己的日常工具軟體分享
-              。
-            </h5>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            className={classes(
-              "bg-secondary",
-              "h-[400px]",
-              "rounded-lg",
-              "flex flex-col items-center",
-              "p-3",
-            )}
-          >
-            {/* Image */}
-            <Image
-              src={myBlogImage}
-              alt="my-blog-image"
-              width={400}
-              height={400}
-            />
-            <Block value={3} />
-            {/* Title */}
-            <h3 className={classes("text-xl")}>My Blog</h3>
-            <Block value={2} />
-            {/* Description */}
-            <h5 className={classes("text-md text-lesslight")}>
-              最近發現自己把一些用了很久的工具換成一些新的酷東西了，所以來學一些其他的部落格作者一樣寫一篇自己的日常工具軟體分享
-              。
-            </h5>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            className={classes(
-              "bg-secondary",
-              "h-[400px]",
-              "rounded-lg",
-              "flex flex-col items-center",
-              "p-3",
-
-            )}
-          >
-            {/* Image */}
-            <Image
-              src={myBlogImage}
-              alt="my-blog-image"
-              width={400}
-              height={400}
-            />
-            <Block value={3} />
-            {/* Title */}
-            <h3 className={classes("text-xl")}>My Blog</h3>
-            <Block value={2} />
-            {/* Description */}
-            <h5 className={classes("text-md text-lesslight")}>
-              最近發現自己把一些用了很久的工具換成一些新的酷東西了，所以來學一些其他的部落格作者一樣寫一篇自己的日常工具軟體分享
-              。
-            </h5>
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
+    <MyContainer className={classes("w-[33%]")}>
+      <MyTitle color={tailwind_config.theme.colors.highlight}>Projects</MyTitle>
+      <Block value={4} />
+      <MyDescription>
+        I absolutely love building software! These are the projects I built
+        since I started coding.
+      </MyDescription>
+      <Block value={4} />
+      <Flex fc gap={4}>
+        {/* SpeedTypingWeb */}
+        <MyItembox
+          hover={false}
+          icon={<TbWorldWww className="text-4xl" />}
+          title="Speed Typing Web"
+          description="A free, feature rich website to practice typing. It's an open source project on github."
+          extras={
+            <Flex jb className="my-1 mr-1 mt-1">
+              <Flex gap={3}>
+                <TechCard>React</TechCard>
+                <TechCard>JavaScript</TechCard>
+              </Flex>
+              <Flex gap={3}>
+                <TechCard contained>
+                  <a
+                    href="https://github.com/Dalufishe/speed-typing-web"
+                    target="_blank"
+                  >
+                    Github
+                  </a>
+                </TechCard>
+                <TechCard contained>
+                  <a
+                    href="http://localhost:3001/speed-typing-web"
+                    target="_blank"
+                  >
+                    Site
+                  </a>
+                </TechCard>
+              </Flex>
+            </Flex>
+          }
+        />
+        {/* Dalufishe.dev */}
+        <MyItembox
+          hover={false}
+          icon={<TbWorldWww className="text-4xl" />}
+          title="Dalufishe.dev"
+          description="My personal homepage."
+          extras={
+            <Flex jb className="my-1 mr-1 mt-1">
+              <Flex gap={3}>
+                <TechCard>Next.js</TechCard>
+                <TechCard>TypeScript</TechCard>
+              </Flex>
+              <Flex gap={3}>
+                <TechCard contained>
+                  <a
+                    href="https://github.com/Dalufishe/dalufishe.dev"
+                    target="_blank"
+                  >
+                    Github
+                  </a>
+                </TechCard>
+                <TechCard contained>
+                  <a
+                    href="http://localhost:3001/speed-typing-web"
+                    target="_blank"
+                  >
+                    Site
+                  </a>
+                </TechCard>
+              </Flex>
+            </Flex>
+          }
+        />
+      </Flex>
+    </MyContainer>
   );
 };
 

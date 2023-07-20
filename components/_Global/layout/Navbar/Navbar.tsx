@@ -3,8 +3,13 @@ import { Listbox, Menu, RadioGroup, Tab, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { change_language_action } from "../../../../redux/action/change_language.act";
 import { classes } from "../../../../utils/classes";
+import Link from "next/link";
 
-const menu = [{ name: "Home" }, { name: "Blog" }, { name: "Contact" }];
+const menu = [
+  { name: "Home", href: "/" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
+];
 
 const Navbar: FC = (props) => {
   const [currentMenuItem, setCurrentMenuItem] = useState(menu[0]);
@@ -35,9 +40,12 @@ const Navbar: FC = (props) => {
         value={currentMenuItem}
         onChange={setCurrentMenuItem}
       >
+        {/* home, blog & contact */}
         {menu.map((menuitem) => {
           return (
             <RadioGroup.Option
+              as={Link}
+              href={menuitem.href}
               className={classes(
                 "cursor-pointer",
                 "hover:bg-primary",

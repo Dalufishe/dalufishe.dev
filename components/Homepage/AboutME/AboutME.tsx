@@ -5,8 +5,8 @@ import { tailwind_config } from "../../../utils/twconf2js";
 import MyImage from "../../../assets/me.png";
 import { AiFillGithub } from "react-icons/ai";
 import { BiLogoDiscordAlt } from "react-icons/bi";
-import HighLight from "../../.Global/ui/HighLight/HighLight";
-import Block from "../../.Global/ui/Block/Block";
+import HighLight from "../../_Global/ui/HighLight/HighLight";
+import Block from "../../_Global/ui/Block/Block";
 
 const AboutME: FC = () => {
   return (
