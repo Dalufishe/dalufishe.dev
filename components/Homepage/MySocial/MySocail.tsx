@@ -11,13 +11,21 @@ import { BsDiscord } from "react-icons/bs";
 import { SiNextdotjs } from "react-icons/si";
 import Flex from "../../_Global/ui/Flex/Flex";
 import { AiFillGithub } from "react-icons/ai";
+import { SOCIAL } from "../../../constant/social";
 
 type Props = {};
 
 const MySocial: FC<Props> = (props: Props) => {
   return (
     <MyContainer className={classes("w-full md:w-[49%] lg:w-[32%]")}>
-      <MyTitle color={tailwind_config.theme.colors.highlight}>Social</MyTitle>
+      <MyTitle
+        highlightColor={tailwind_config.theme.colors.highlight}
+        highlightWidth={80}
+        highlightAnimated
+        highlightAnimatedDelay={300}
+      >
+        Social
+      </MyTitle>
       <Block value={4} />
       <MyDescription>
         You can find me on discord, github, and more! Contact me if you have a
@@ -26,22 +34,19 @@ const MySocial: FC<Props> = (props: Props) => {
       <Block value={4} />
       <Flex fc gap={4}>
         {/* Github */}
-        <a href="https://github.com/Dalufishe" target="_blank">
+        <a href={SOCIAL.GITHUB.HREF} target="_blank">
           <MyItembox
             icon={<AiFillGithub className="text-4xl" />}
             title="Github"
-            description="Dalufishe"
+            description={SOCIAL.GITHUB.NAME}
           />
         </a>
         {/* Discord */}
-        <a
-          href="http://discordapp.com/users/520869862650937364"
-          target="_blank"
-        >
+        <a href={SOCIAL.DISCORD.HREF} target="_blank">
           <MyItembox
             icon={<BsDiscord className="text-3xl" />}
             title="Discord"
-            description="dalufishe"
+            description={SOCIAL.DISCORD.NAME}
           />
         </a>
       </Flex>

@@ -15,13 +15,14 @@ import { GrMysql } from "react-icons/gr";
 
 const MyTechStack: FC = () => {
   return (
-    <MyContainer
-      className={classes(
-        "w-full md:w-[49%] lg:w-[32%]",
-      )}
-    >
-      <MyTitle color={tailwind_config.theme.colors.highlight}>
-        Teck Stack
+    <MyContainer className={classes("w-full md:w-[49%] lg:w-[32%]")}>
+      <MyTitle
+        highlightColor={tailwind_config.theme.colors.highlight}
+        highlightWidth={80}
+        highlightAnimated
+        highlightAnimatedDelay={100}
+      >
+        Tech Stack
       </MyTitle>
       <Block value={4} />
       <MyDescription>

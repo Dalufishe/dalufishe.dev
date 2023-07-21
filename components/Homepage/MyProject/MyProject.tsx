@@ -16,7 +16,14 @@ import { tailwind_config } from "../../../utils/twconf2js";
 const MyProject: FC = () => {
   return (
     <MyContainer className={classes("w-full md:w-[49%] lg:w-[32%]")}>
-      <MyTitle color={tailwind_config.theme.colors.highlight}>Projects</MyTitle>
+      <MyTitle
+        highlightColor={tailwind_config.theme.colors.highlight}
+        highlightWidth={80}
+        highlightAnimated
+        highlightAnimatedDelay={200}
+      >
+        Projects
+      </MyTitle>
       <Block value={4} />
       <MyDescription>
         I absolutely love building software! These are the projects I built

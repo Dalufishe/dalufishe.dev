@@ -1,13 +1,33 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { classes } from "../../../../utils/classes";
 import { css } from "@emotion/css";
 
 type Props = {
   children: any;
-  color: string;
+  highlightColor: string;
+  highlightWidth: number;
+  highlightAnimated?: boolean;
+  highlightAnimatedDelay?: number;
 };
 
-const MyTitle: FC<Props> = (props: Props) => {
+const MyTitle: FC<Props> = ({
+  children,
+  highlightColor,
+  highlightWidth,
+  highlightAnimated = false,
+  highlightAnimatedDelay = 100,
+}: Props) => {
+  // scale
+  const [scale, setScale] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setScale(1);
+    }, highlightAnimatedDelay);
+    return () => {};
+  }, []);
+
+  // jsx
   return (
     <h4
       className={classes(
@@ -19,15 +39,24 @@ const MyTitle: FC<Props> = (props: Props) => {
             position: absolute;
             left: 0;
             top: 100%;
-            width: 3.5em;
+            width: ${highlightWidth}px;
             height: 3px;
-            background-color: ${props.color};
+            background-color: ${highlightColor};
             pointer-events: none;
           }
-        `
+        `,
+        highlightAnimated
+          ? css`
+              &::after {
+                transform: scale(${scale});
+                transition: transform 0.2s ease-in-out;
+                transform-origin: left;
+              }
+            `
+          : ""
       )}
     >
-      {props.children}
+      {children}
     </h4>
   );
 };

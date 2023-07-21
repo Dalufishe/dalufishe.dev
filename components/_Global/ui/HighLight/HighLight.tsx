@@ -6,20 +6,25 @@ type Props = {
   children: any;
   type: "underline";
   color: string;
+  animated?: boolean;
 };
 
-const HighLight: FC<Props> = (props: Props) => {
-  if (props.type === "underline") {
+const HighLight: FC<Props> = ({
+  children,
+  type,
+  color,
+}: Props) => {
+  if (type === "underline") {
     return (
       <span
         className={classes(
           "border-b-2",
           css`
-            border-color: ${props.color};
+            border-color: ${color};
           `
         )}
       >
-        {props.children}
+        {children}
       </span>
     );
   } else {

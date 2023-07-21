@@ -8,6 +8,7 @@ import { BiLogoDiscordAlt } from "react-icons/bi";
 import HighLight from "../../_Global/ui/HighLight/HighLight";
 import Block from "../../_Global/ui/Block/Block";
 import { css } from "@emotion/css";
+import { SOCIAL } from "../../../constant/social";
 
 const AboutME: FC = () => {
   return (
@@ -42,9 +43,12 @@ const AboutME: FC = () => {
       </h3>
       <Block value={3} />
       <ul className="flex gap-2 text-2xl text-lesslight">
-        <li>{<AiFillGithub />}</li>
-        <li>{<BiLogoDiscordAlt />}</li>
-        <li></li>
+        <li>
+          <a href={SOCIAL.GITHUB.HREF}>{<AiFillGithub />}</a>
+        </li>
+        <li>
+          <a href={SOCIAL.DISCORD.HREF}>{<BiLogoDiscordAlt />}</a>
+        </li>
       </ul>
     </div>
   );
