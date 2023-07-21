@@ -34,7 +34,10 @@ const MySocial: FC<Props> = (props: Props) => {
           />
         </a>
         {/* Discord */}
-        <a href="https://discord.gg/RJkEhWmGw5" target="_blank">
+        <a
+          href="http://discordapp.com/users/520869862650937364"
+          target="_blank"
+        >
           <MyItembox
             icon={<BsDiscord className="text-3xl" />}
             title="Discord"
