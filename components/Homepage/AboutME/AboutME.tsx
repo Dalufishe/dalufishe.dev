@@ -38,16 +38,20 @@ const AboutME: FC = () => {
         Web Developer
       </h2>
       <Block value={2} />
-      <h3 className="text-2xl text-center">
+      <h3 className="text-2xl text-center px-3">
         love softwares, coding, games and more. Have fun :D
       </h3>
       <Block value={3} />
       <ul className="flex gap-2 text-2xl text-lesslight">
         <li>
-          <a href={SOCIAL.GITHUB.HREF} target="_blank">{<AiFillGithub />}</a>
+          <a href={SOCIAL.GITHUB.HREF} target="_blank">
+            {<AiFillGithub />}
+          </a>
         </li>
         <li>
-          <a href={SOCIAL.DISCORD.HREF} target="_blank">{<BiLogoDiscordAlt />}</a>
+          <a href={SOCIAL.DISCORD.HREF} target="_blank">
+            {<BiLogoDiscordAlt />}
+          </a>
         </li>
       </ul>
     </div>

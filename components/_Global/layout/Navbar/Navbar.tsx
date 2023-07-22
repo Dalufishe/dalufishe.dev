@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { change_language_action } from "../../../../redux/action/change_language.act";
 import { classes } from "../../../../utils/classes";
 import Link from "next/link";
-
 const menu = [
   { name: "Home", href: "/" },
   { name: "Blog", href: "/blog" },
@@ -31,9 +30,7 @@ const Navbar: FC = (props) => {
       )}
     >
       {/* Dalufishe */}
-      <h1
-        className={classes("text-2xl font-bold", "cursor-pointer")}
-      >
+      <h1 className={classes("text-2xl font-bold", "cursor-pointer")}>
         Dalufishe
       </h1>
       {/* Menu */}
