@@ -12,6 +12,7 @@ import { SiNextdotjs, SiTypescript } from "react-icons/si";
 import Flex from "../../_Global/ui/Flex/Flex";
 import { BiLogoJava } from "react-icons/bi";
 import { GrMysql } from "react-icons/gr";
+import { AiFillApi } from "react-icons/ai";
 
 const MyTechStack: FC = () => {
   return (
@@ -48,6 +49,12 @@ const MyTechStack: FC = () => {
           icon={<SiTypescript className="text-3xl" />}
           title="TypeScript"
           description="Statically typed version of Javascript. Love it."
+        />
+        {/* API */}
+        <MyItembox
+          icon={<AiFillApi className="text-3xl" />}
+          title="API"
+          description="Connecting the services and getting apps stronger."
         />
         {/* Java */}
         <MyItembox
