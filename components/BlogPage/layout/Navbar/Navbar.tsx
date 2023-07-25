@@ -33,7 +33,7 @@ const Navbar: FC = (props) => {
       {/* Dalufishe */}
       <div>
         <h1 className={classes("text-2xl font-bold", "cursor-pointer")}>
-          Dalufishe Blogs
+          Dalufishe <span className="text-lesslight">Blog</span>
         </h1>
       </div>
       {/* Menu */}

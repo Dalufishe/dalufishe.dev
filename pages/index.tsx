@@ -3,7 +3,6 @@ import Head from "next/head";
 import { classes } from "../utils/classes";
 import AboutME from "../components/Homepage/AboutME/AboutME";
 import MyTechStack from "../components/Homepage/MyTechStack/MyTechStack";
-import Navbar from "../components/_Global/layout/Navbar/Navbar";
 import Block from "../components/_Global/ui/Block/Block";
 import MySocial from "../components/Homepage/MySocial/MySocail";
 import Flex from "../components/_Global/ui/Flex/Flex";
