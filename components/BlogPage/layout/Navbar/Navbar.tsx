@@ -31,9 +31,11 @@ const Navbar: FC = (props) => {
       )}
     >
       {/* Dalufishe */}
-      <h1 className={classes("text-2xl font-bold", "cursor-pointer")}>
-        Dalufishe
-      </h1>
+      <div>
+        <h1 className={classes("text-2xl font-bold", "cursor-pointer")}>
+          Dalufishe Blogs
+        </h1>
+      </div>
       {/* Menu */}
       <RadioGroup
         className={classes("text-md", "flex items-center", "w-fit h-full")}

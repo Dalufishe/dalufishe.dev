@@ -1,19 +1,15 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { css } from "@emotion/css";
 import { classes } from "../../../../utils/classes";
 
 type Props = {
-  children: any;
+  children: ReactNode;
   type: "underline";
   color: string;
   animated?: boolean;
 };
 
-const HighLight: FC<Props> = ({
-  children,
-  type,
-  color,
-}: Props) => {
+const HighLight: FC<Props> = ({ children, type, color }: Props) => {
   if (type === "underline") {
     return (
       <span

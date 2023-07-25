@@ -5,11 +5,10 @@ import Navbar from "./Navbar/Navbar";
 
 type Props = { children: ReactElement | ReactElement[]};
 
-export default function Layout({ children }: Props) {
+export default function DefaultLayout({ children }: Props) {
   return (
     <>
       <Navbar />
-      <Block value={20} />
       {children}
     </>
   );

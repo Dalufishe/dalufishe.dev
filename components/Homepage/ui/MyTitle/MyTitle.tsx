@@ -1,9 +1,9 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, ReactNode } from "react";
 import { classes } from "../../../../utils/classes";
 import { css } from "@emotion/css";
 
 type Props = {
-  children: any;
+  children: ReactNode;
   highlightColor: string;
   highlightWidth: number;
   highlightAnimated?: boolean;

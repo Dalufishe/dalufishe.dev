@@ -12,7 +12,7 @@ import { wrapper } from "../redux/store";
 import myImage from "../assets/me.png";
 import NextIcon from "../components/_Global/icons/NextIcon";
 
-const Home: NextPage = (props) => {
+const HomePage: NextPage = (props) => {
   return (
     <div>
       <Head>
@@ -34,6 +34,7 @@ const Home: NextPage = (props) => {
         <meta property="og:image" content={myImage.src} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Block value={20} />
       <div className={classes("flex flex-col items-center", "relative")}>
         {/* 關於我 */}
         <AboutME />
@@ -72,4 +73,4 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
   }
 );
 
-export default Home;
+export default HomePage;

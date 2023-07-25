@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 
 type Props = {
-  children: any;
+  children: ReactNode;
 };
 
 const MyDescription: FC<Props> = (props: Props) => {

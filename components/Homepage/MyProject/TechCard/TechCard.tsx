@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { classes } from "../../../../utils/classes";
 
-type Props = { children: any; contained?: boolean };
+type Props = { children: ReactNode; contained?: boolean };
 
 const TechCard: FC<Props> = ({ children, contained = false }: Props) => {
   return (

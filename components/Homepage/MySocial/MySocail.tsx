@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { classes } from "../../../utils/classes";
-import { css } from "@emotion/css";
 import { tailwind_config } from "../../../utils/twconf2js";
 import MyContainer from "../ui/MyContainer/MyContainer";
 import MyTitle from "../ui/MyTitle/MyTitle";
@@ -8,7 +7,6 @@ import Block from "../../_Global/ui/Block/Block";
 import MyDescription from "../ui/MyDescription/MyDescription";
 import MyItembox from "../ui/MyItembox/MyItembox";
 import { BsDiscord } from "react-icons/bs";
-import { SiNextdotjs } from "react-icons/si";
 import Flex from "../../_Global/ui/Flex/Flex";
 import { AiFillGithub } from "react-icons/ai";
 import { SOCIAL } from "../../../constant/social";

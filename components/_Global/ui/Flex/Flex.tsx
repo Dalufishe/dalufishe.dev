@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { classes } from "../../../../utils/classes";
 import { css } from "@emotion/css";
 
@@ -15,7 +15,7 @@ type FlexProps = {
 };
 
 type Props = {
-  children: any;
+  children: ReactNode;
   className?: string;
 } & FlexProps;
 

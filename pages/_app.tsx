@@ -2,7 +2,7 @@ import "../styles/global.scss";
 import type { AppProps } from "next/app";
 import { Analytics } from "@vercel/analytics/react";
 import { wrapper } from "../redux/store";
-import Layout from "../components/_Global/layout/layout";
+import DefaultLayout from "../components/_Global/layout/DefaultLayout";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 
@@ -15,7 +15,8 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
+  const getLayout =
+    Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
   return getLayout(
     <>
       <Component {...pageProps} />

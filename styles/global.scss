@@ -17,6 +17,6 @@ body {
   background-color: theme("colors.primary");
   font-family: "Oswald", sans-serif;
   font-family: "Roboto", sans-serif;
-  overflow-y: scroll;
+  overflow-y: auto;
   overscroll-behavior: none;
 }

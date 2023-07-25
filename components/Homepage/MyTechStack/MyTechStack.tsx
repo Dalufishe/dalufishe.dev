@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { classes } from "../../../utils/classes";
-import { css } from "@emotion/css";
 import { tailwind_config } from "../../../utils/twconf2js";
 import MyContainer from "../ui/MyContainer/MyContainer";
 import MyTitle from "../ui/MyTitle/MyTitle";
