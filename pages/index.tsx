@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { classes } from "../utils/classes";
 import AboutME from "../components/Homepage/AboutME/AboutME";
@@ -35,8 +35,6 @@ const Home: NextPage = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={classes("flex flex-col items-center", "relative")}>
-        <Navbar />
-        <Block value={20} />
         {/* 關於我 */}
         <AboutME />
         <Block value={15} />
@@ -65,8 +63,10 @@ const Home: NextPage = (props) => {
   );
 };
 
-export const getStaticProps = wrapper.getStaticProps(() => async () => {
-  return { props: {} };
-});
+export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
+  () => async () => {
+    return { props: {} };
+  }
+);
 
 export default Home;
