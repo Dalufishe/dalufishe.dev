@@ -53,8 +53,11 @@ const Home: NextPage = (props) => {
         <Block value={10} />
         <Flex fc ic gap={2}>
           <div className="text-lesslight">&copy; 2023 · Dalufishe</div>
-          <Flex gap={2} is className="text-lesslight text-sm text-left">
-            powered by <NextIcon />, an open source web framework.
+          <Flex gap={2} is className="text-lesslight text-sm text-left" fw jc>
+            <span className="whitespace-nowrap">powered by</span> <NextIcon />
+            <span className="whitespace-nowrap">
+              , an open source web framework.
+            </span>
           </Flex>
         </Flex>
         <Block value={5} />
