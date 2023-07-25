@@ -50,8 +50,8 @@ const BlogPage: NextPageWithLayout<Props> = (props: Props) => {
       <Block value={40} />
       <Flex fc ic gap={12} className={classes("relative")}>
         {props.blogsData.map((blogData: BlogData, index) => (
-          <Link href={"blog/blog" + (index + 1)}>
-            <BlogCrad key={blogData.title} {...blogData} />
+          <Link href={"blog/blog" + (index + 1)} key={index}>
+            <BlogCrad {...blogData} />
           </Link>
         ))}
       </Flex>
