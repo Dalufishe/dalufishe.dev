@@ -52,7 +52,7 @@ const BlogCrad: FC<Props> = (props: Props) => {
           <h2 className="text-[24px] font-bold">{props.title}</h2>
           <Flex gap={3}>
             {props.tags?.map((tag) => (
-              <TagCard>{tag}</TagCard>
+              <TagCard key={tag}>{tag}</TagCard>
             ))}
           </Flex>
         </Flex>
