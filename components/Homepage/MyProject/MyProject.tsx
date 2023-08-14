@@ -31,6 +31,39 @@ const MyProject: FC = () => {
       </MyDescription>
       <Block value={4} />
       <Flex fc gap={4}>
+        {/* Ptt */}
+        <MyItembox
+          hover={false}
+          icon={<TbWorldWww className="text-4xl" />}
+          title="Ptt-third-party-client"
+          description="Brand new PTT third-party client, simple and fast"
+          extras={
+            <Flex jb className="my-1 mr-1 mt-1" fw>
+              <Flex gap={3}>
+                <TechCard>Next.js</TechCard>
+                <TechCard>TypeScript</TechCard>
+              </Flex>
+              <Flex gap={3}>
+                <TechCard contained>
+                  <a
+                    href="https://github.com/Dalufishe/third-party-ptt-client"
+                    target="_blank"
+                  >
+                    Github
+                  </a>
+                </TechCard>
+                <TechCard contained>
+                  <a
+                    href="https://third-party-ptt-client.vercel.app/forum/hot"
+                    target="_blank"
+                  >
+                    Site
+                  </a>
+                </TechCard>
+              </Flex>
+            </Flex>
+          }
+        />
         {/* SpeedTypingWeb */}
         <MyItembox
           hover={false}
