@@ -17,6 +17,7 @@ type BlogData = {
   title: string;
   description: string;
   tags: string[];
+  id: string;
 };
 
 type BlogsData = BlogData[];
@@ -49,8 +50,8 @@ const BlogPage: NextPageWithLayout<Props> = (props: Props) => {
       </Head>
       <Block value={40} />
       <Flex fc ic gap={12} className={classes("relative")}>
-        {props.blogsData.map((blogData: BlogData, index) => (
-          <Link href={"blog/blog" + (index + 1)} key={index}>
+        {props.blogsData.map((blogData: BlogData) => (
+          <Link href={`blog/${blogData.id}`} key={blogData.id}>
             <BlogCrad {...blogData} />
           </Link>
         ))}
@@ -67,19 +68,15 @@ BlogPage.getLayout = (page) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   let blogsData: string[] = [];
 
-  const dirs = readdirSync(
-    path.join(process.cwd(), "data", "blogs", "_test-blogs")
-  );
+  const dirs = readdirSync(path.join(process.cwd(), "data", "blogs"));
   dirs.forEach((dir) => {
-    const datas = readdirSync(
-      path.join(process.cwd(), "data", "blogs", "_test-blogs", dir)
-    );
+    const datas = readdirSync(path.join(process.cwd(), "data", "blogs", dir));
     const data = _.find(datas, (s) => {
-      return s === ".json";
+      return s === "meta.json";
     }) as string;
 
     const file = readFileSync(
-      path.join(process.cwd(), "data", "blogs", "_test-blogs", dir, data)
+      path.join(process.cwd(), "data", "blogs", dir, data)
     );
 
     const json = JSON.parse(file.toString());

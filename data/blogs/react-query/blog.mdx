@@ -1,0 +1,488 @@
+# React Query 技術分享
+
+### 簡介
+
+#### 什麼是 React Query ?
+
+React Query 是一款在 React 應用中抓取資料 (fetching data) 的 React 函式庫。
+
+#### 為什麼使用 React Query ?
+
+1. 更加貼合框架本身
+
+不同於傳統使用 useEffect 搭配 useState 抓取資料方式， React Query 基於 hooks 的做法更加更加貼合框架本身，使程式碼更簡潔，API 操作更加容易，並使過往傳統方案使用上難以解決的問題變得極為簡單 (快取，合併請求等)。
+
+2. 提供大量功能
+
+不管是網路請求抑或框架相關特性，React Query 提供了大量的 API 解決需求。
+
+3. 伺服端狀態管理
+
+傳統使用 redux 等狀態管理庫管理數據，對於網路抓取的資料並沒有良好的支持。React Query 同時擅於做伺服端狀態的管理；並且可以和 redux 共用 (redux 管理客戶端狀態，react query 管理伺服端狀態)。
+
+### 配置環境
+
+- 安裝依賴
+
+```bash
+npm i react-query
+```
+
+- 配置 QueryClientProvider & QueryClient
+
+```js
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient();
+
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <>{"access to React Query"}</>
+    </QueryClientProvider>
+  );
+}
+```
+
+### 開發工具
+
+導入開發工具讓開發、除錯更加容易。
+
+```js
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
+const queryClient = new QueryClient();
+
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <>{"access to React Query"}</>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+    </QueryClientProvider>
+  );
+}
+```
+
+### 基本查詢 (Basic Query)
+
+`useQuery()` 簡化了常見的網路獲取需求如獲取資料 (data)、判斷載入 (isLoading)、錯誤處理 (isError & error) 等。
+
+```js
+function TestComponent() {
+  const { data, isLoading, isError, error } = useQuery("superheroes", () =>
+    axios.get("http://localhost:4000/superheroes")
+  );
+
+  if (isLoading) {
+    return <h2>Loading...</h2>;
+  }
+
+  if (isError) {
+    return <h2>Error: {error.message}</h2>;
+  }
+
+  return (
+    <>
+      <h2>Super Heroes Page</h2>
+      {data?.data.map((hero) => (
+        <div key={hero.id}>{hero.name}</div>
+      ))}
+    </>
+  );
+}
+```
+
+#### useQuery() 用法
+
+- 參數
+
+  - 查詢 key : 在 React Query 內部做標記。
+  - 查詢函數 : 告知 React Query 該執行的網路請求函數。
+  - 配置物件 : 用於配置進階行為。
+
+- 解構物件
+
+  - data : 請求資料。
+  - isLoading : 判斷是否載入。
+  - isError : 判斷是某出現錯誤。
+  - error : 錯誤資訊 (如 error.message 表示錯誤訊息)。
+
+### 查詢快取 (Query Cache)
+
+在重複發送請求的情況下，React Query 會優先讀取自身的狀態管理作為快取，保證重新發送請求時，頁面仍有數據，當成功獲取數據，則替換數據。
+
+```js
+const { data, isLoading, isFetching, isError, error } = useQuery(
+  "superheroes",
+  () => axios.get("http://localhost:4000/superheroes")
+);
+
+console.log({ isLoading, isFetching });
+
+if (isLoading) {
+  return <h2>Loading...</h2>;
+}
+
+if (isError) {
+  return <h2>Error: {error.message}</h2>;
+}
+
+return (
+  <>
+    <h2>Super Heroes Page</h2>
+    {data?.data.map((hero) => (
+      <div key={hero.id}>{hero.name}</div>
+    ))}
+  </>
+);
+```
+
+快取讓使用者體驗更佳，並降低伺服器負荷。
+
+注意:
+
+1. 可使用 isFetching 觀察運作流程。
+2. isLoading 只有在初次請求會觸發，更貼合快取機制。
+
+#### 快取時間 (cache Time)
+
+我們可以透過設置快取時間 (cacheTime)，告訴 React Query 在未使用數據情況下，多久該銷毀數據 (默認為 5 分鐘)。
+
+#### 避免重請 (Stale Time & refechOn 系列)
+
+有些時候我們並不想每次組件加載，useQuery() 調用就發送請求 (可能是伺服端數據不常更新)。透過配置過時時間 (staleTime)，告訴 React Query 間隔多久在重新調用 useQuery() 時要發送請求 (其他情況使用快取)。
+
+```js
+const { data } = useQuery(
+  "superheroes",
+  () => axios.get("http://localhost:4000/superheroes"),
+  { staleTime: 30000 }
+);
+```
+
+也可以將 refechOn 系列函數設為 false，告訴 React Query 在某些情況下避免重請 (如視窗聚焦，重新掛載等)。
+
+### 重新查詢 (Refecth)
+
+#### 定時重請 (refetch Interval) (Polling)
+
+我們可以配置重請時間 (refetchInterval)，告訴 React Query 多久要重新發送請求。
+
+```js
+const { data } = useQuery(
+  "superheroes",
+  () => axios.get("http://localhost:4000/superheroes"),
+  { refetchInterval: 3000 }
+);
+```
+
+默認情況下 window 失去焦點則停止發送請求，加上 refetchIntervalInBackground 為 true 可關閉此設置。
+
+#### 特定情況重請
+
+- refetchOnWindowFocus: 在視窗重新聚焦重請。
+- refetch OnMount: 在組件掛載時重請。
+
+### 指令式查詢 (refetch api)
+
+useQuery() 預設是掛載時獲取資料，我們可以透過將 enabled 配置項設為 false，並搭配 refetch 函數，實現命令式查詢 (搭配事件等操作)。
+
+```js
+const { data, refetch } = useQuery(
+  "superheroes",
+  () => axios.get("http://localhost:4000/superheroes"),
+  {
+    enabled: false,
+  }
+);
+
+return (
+  <ul>
+    <h2>Super Heroes</h2>
+    <button
+      onClick={() => {
+        refetch();
+      }}
+    >
+      Fetch heroes
+    </button>
+    {data?.data.map((hero) => (
+      <li key={hero.id}>{hero.name}</li>
+    ))}
+  </ul>
+);
+```
+
+這種資料獲取方式也有快取支持。
+
+### 成功 / 錯誤回調 (onSucess / onError)
+
+配置項可傳入 onSuccess 和 onError 回調。
+
+onSccess 會在請求成功調用，onError 則會在發生錯誤調用。
+
+onSccess 可獲取即時的 data 參數，onError 則會獲得 error 物件。
+
+```js
+const onSuccess = (data) => {
+  console.log("Perform side effect after data fetching");
+};
+
+const onError = (error) => {
+  console.log("Perform side effect after encountering error");
+};
+
+const { data, isLoading, isError, error } = useQuery(
+  "superheroes",
+  () => axios.get("http://localhost:4000/superheroes"),
+  {
+    onSuccess,
+    onError,
+  }
+);
+```
+
+### 資料轉換 (Data Transformation)
+
+React Query 支持請求到的資料 (fetch data) 和 React Query 返回的資料 (data.data) 之間再做一層轉換，使用 select 函數。
+
+```js
+export default function RQSuperHeroesPage() {
+  const { data } = useQuery(
+    "superheroes",
+    () => axios.get("http://localhost:4000/superheroes"),
+    {
+      select(data) {
+        return data.data.map((d) => d.name);
+      },
+    }
+  );
+
+  return (
+    <ul>
+      <h2>Super Heroes</h2>
+
+      {data.map((hero) => (
+        <li key={hero}>{hero}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+### 動態查詢 (Dynamic Query)
+
+有時候，同一個 useQuery() 函數可能會處理不同請求 (動態查詢，通常搭配動態路由)。
+
+除了配置動態路徑外，且記 query key 也需要動態配置，以區分他們為不同的 query 查詢 (影響到狀態管理等因素)。
+
+```js
+const { heroId } = useParams();
+
+const { data, isLoading, isError, error } = useQuery(
+  ["super-hero", heroId],
+  () => axios.get(`http://localhost:4000/superheroes/${heroId}`)
+);
+
+if (isLoading) return <h2>Loading...</h2>;
+
+if (isError) return <h2>{error.message}</h2>;
+
+return (
+  <div>
+    {data?.data.name} - {data?.data.alterEgo}
+  </div>
+);
+```
+
+### 平行查詢 (Parallel Queries)
+
+有時候一個組件可能會需要發送多個請求，其解決辦法，就是簡單的使用多個 useQuery() 發送多個請求。
+
+```js
+const { data: superHeroes } = useQuery("superheroes", () =>
+  axios.get(`http://localhost:4000/superheroes`)
+);
+const { data: friends } = useQuery("friends", () =>
+  axios.get(`http://localhost:4000/friends`)
+);
+```
+
+可使用 Javascript 解構別名 `:` 來區分不同解構的變數。
+
+### 平行動態查詢 (Dynamic Parallel Queries)
+
+有時候單組件可能會需要發送多個請求，但請求個數不固定，因此 React Query 提供了 `useQueries()` hook 解決此類需求。
+
+```js
+const queryResults = useQueries(
+  heroIds.map((id) => {
+    return {
+      queryKey: ["super-hero", id],
+      queryFn: () => fetchSuperHero(id),
+    };
+  })
+);
+```
+
+### 依賴查詢 (Depentdent Queries)
+
+有時候單組件可能會需要發送多個請求，並且一請求依賴於另一請求的結果。
+
+使用 enabled 巧妙控制發送時機，達到依賴查詢目的。
+
+```js
+// 透過 email 獲取 channel id
+const { data: user } = useQuery(["user", email], () => fetchUserByEmail(email));
+const channelId = user?.data.channelId;
+// 透過 channel id 獲取 courses
+const { data: courses } = useQuery(
+  ["courses", channelId],
+  () => fetchCoursesByChannelId,
+  { enabled: !!channelId }
+);
+```
+
+### 伺服端狀態管理 (Server Side State Management)
+
+當我們使用 React Query 抓取資料，這些伺服端數據都會交由 React Query 管理。
+
+除了 React Query 內建的快取機制使用到這些伺服端狀態，我們也可透過 `useQueryClient()` 手動存取伺服端狀態。
+
+```js
+const queryClient = useQueryClient();
+const queryData = queryClient.getQueryData("query-key");
+```
+
+#### 初始化數據 (Initial Data)
+
+伺服端狀態管理其中一個應用場景在於設置初始化數據。有時我們可能在應用某處取得我們需要的數據 (但過時的)，可透過讀取狀態，設置初始數據替代原先 isLoading 等待。
+
+```js
+const quertClient = useQueryClient();
+const { data, isLoading, isError, error } = useQuery(
+  ["super-hero", heroId],
+  () => axios.get(`http://localhost:4000/superheroes/${heroId}`),
+  {
+    initialData() {
+      const hero = quertClient
+        .getQueryData("superheroes")
+        ?.data?.find((hero) => hero.id === parseInt(heroId));
+
+      if (hero) {
+        return {
+          data: hero,
+        };
+      } else {
+        return undefined;
+      }
+    },
+  }
+);
+```
+
+#### 重新發送請求 (Query Invalidation)
+
+quertClient.invalidateQueries("query-key") 用於告知 React Query 在合適的情況下作廢查詢結果，使其重新查詢。
+
+通常搭配改動請求使用。
+
+#### 改動查詢狀態 (Change Query Data)
+
+quertClient.setQueryData("query-key", callback) 用於對查詢狀態進行改動。
+
+通常搭配改動請求使用 (更佳解)。
+
+### 分頁導航相關 (Paginated Queries)
+
+keepPreviousData 配置項常常用於分頁導航。將 keepPreviousData 設置為 true，React Query 會快取上一次使用的數據作為初始數據，直到新數據返回。
+
+### 無限查詢相關 (Infinite Queries)
+
+`useInfiniteQuery()` 對無限查詢有良好支持。
+
+使用 useInfiniteQuery() 可將數據交由 React Query 做伺服端狀態管理 (支持快取等特性)，並有更豐富，更專業的 Api 可供操作。
+
+- pageParam 參數: 指定無限查詢當前頁。
+- getNextPageParam 函數: 下頁規則計算函數。
+- data.pages & pages.data: 籤套關係的數據，更專業的分組。
+
+```js
+const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+  "colors",
+  ({ pageParam = 1 }) =>
+    axios.get(`http://localhost:4000/colors?_limit=2&_page=${pageParam}`),
+  {
+    getNextPageParam(_lastPage, pages) {
+      if (pages.length < 5) {
+        return pages.length + 1;
+      } else {
+        return undefined;
+      }
+    },
+  }
+);
+
+return (
+  <ul>
+    {data?.pages.map((page) =>
+      page?.data.map((color) => <li key={color.id}>{color.name}</li>)
+    )}
+    {isFetchingNextPage ? (
+      <>Fetching</>
+    ) : (
+      <button onClick={fetchNextPage}>click</button>
+    )}
+  </ul>
+);
+```
+
+### 改動請求 (Mutations)
+
+React Query 除了支持 GET 請求，POST、DELETE 等也可透過 `useMutation()` hook 操作。
+
+- 只需傳 cb: 不像是 useQuery 需傳入 query key，useMutation() 僅需傳入一個回調函數。
+- mutate 函數: 解構 mutate 函數執行改動請求。
+- cb 接收 mutate 傳入: cb 參數會收到 mutate 函數傳入的引數。
+
+```js
+const { mutate } = useMutation((hero) =>
+  axios.post("localhost:4000/superheroes", hero)
+);
+
+mutate({ name: "XXX", age: 18 });
+```
+
+useMutation() 同樣支持 isLoading, isError, error 等 API。
+
+#### 改動請求後重請
+
+當改動請求成功，伺服器數據發生改動，則重新請求。
+
+```js
+const queryClient = useQueryClient();
+useMutation((hero) => axios.post("localhost:4000/superheroes", hero), {
+  onSuccess() {
+    queryClient.invalidateQueries("superheroes");
+  },
+});
+```
+
+#### 改動請求後修改查詢狀態
+
+當改動請求成功，根據 POST 返回的數據改動查詢狀態 (相對於重請更佳解)。
+
+```js
+const queryClient = useQueryClient();
+useMutation((hero) => axios.post("localhost:4000/superheroes", hero), {
+  onSuccess(data) {
+    queryClient.setQueryData("superheroes", (oleQueryData) => {
+      return {
+        ...oleQueryData,
+        data: [...oleQueryData.data, data.data],
+      };
+    });
+  },
+});
+```

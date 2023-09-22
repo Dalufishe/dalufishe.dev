@@ -1,5 +1,6 @@
 import resolveConfig from "tailwindcss/resolveConfig";
-const tailwindcss_config_js = require("../tailwind.config");
+
+import tailwindcss_config_js from "../tailwind.config";
 
 const tailwind_config = resolveConfig(tailwindcss_config_js);
 

@@ -7,6 +7,7 @@ import { css } from "@emotion/css";
 import { classes } from "../../../utils/classes";
 import { NextPageWithLayout } from "../../_app";
 import BlogLayout from "../../../components/BlogPage/layout/BlogLayout";
+import Block from "../../../components/_Global/ui/Block/Block";
 
 type PageProps = {
   source: MDXRemoteSerializeResult;
@@ -16,7 +17,8 @@ const BlogIdPage: NextPageWithLayout<PageProps> = (props: PageProps) => {
   const { source } = props;
 
   return (
-    <div className={classes("flex justify-center")}>
+    <div className={classes("flex flex-col items-center")}>
+      <Block value={40} />
       <div
         className={classes(
           "w-[1024px]",
@@ -61,17 +63,11 @@ const BlogIdPage: NextPageWithLayout<PageProps> = (props: PageProps) => {
 };
 
 BlogIdPage.getLayout = (page) => {
-  return (
-    <BlogLayout>
-      {page}
-    </BlogLayout>
-  );
+  return <BlogLayout>{page}</BlogLayout>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blogsFolders = await readdir(
-    path.join(process.cwd(), "data", "blogs", "_test-blogs")
-  );
+  const blogsFolders = await readdir(path.join(process.cwd(), "data", "blogs"));
   const paths = blogsFolders.map((blogsFolder) => "/blog/" + blogsFolder);
   return {
     paths,
@@ -85,7 +81,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (typeof blogid !== "string") return { notFound: true };
 
   const source = await readFile(
-    path.join(process.cwd(), "data", "blogs", "_test-blogs", blogid, ".mdx")
+    path.join(process.cwd(), "data", "blogs", blogid, "blog.mdx")
   );
 
   const mdxSource = await serialize(source);
