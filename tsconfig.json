@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "redux/store.js", "utils/twconf2js.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "redux/store.js", "utils/twconf2js.ts"],
   "exclude": ["node_modules"]
 }
