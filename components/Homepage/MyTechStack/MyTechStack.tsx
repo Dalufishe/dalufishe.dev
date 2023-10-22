@@ -17,7 +17,7 @@ const MyTechStack: FC = () => {
   return (
     <MyContainer className={classes("w-full md:w-[49%] lg:w-[32%]")}>
       <MyTitle
-        highlightColor={tailwind_config.theme.colors.highlight}
+        highlightColor={tailwind_config?.theme?.colors?.highlight as string}
         highlightWidth={80}
         highlightAnimated
         highlightAnimatedDelay={100}

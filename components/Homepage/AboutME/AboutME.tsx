@@ -31,7 +31,7 @@ const AboutME: FC = () => {
         A{" "}
         <HighLight
           type="underline"
-          color={tailwind_config.theme.colors.highlight}
+          color={tailwind_config?.theme?.colors?.highlight as string}
         >
           Full Stack
         </HighLight>{" "}
