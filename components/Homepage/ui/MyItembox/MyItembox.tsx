@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { classes } from "../../../../utils/classes";
 import Flex from "../../../_Global/ui/Flex/Flex";
 
@@ -6,7 +6,7 @@ type Props = {
   className?: string;
   icon?: any;
   title: string;
-  description: string;
+  description: ReactNode;
   extras?: any;
   hover?: boolean;
 };

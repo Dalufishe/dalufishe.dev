@@ -31,12 +31,105 @@ const MyProject: FC = () => {
       </MyDescription>
       <Block value={4} />
       <Flex fc gap={4}>
+        {/* Github Search + */}
+        <MyItembox
+          hover={false}
+          icon={<TbWorldWww className="text-4xl" />}
+          title="Github Search +"
+          description="Next Gen Github Search Tool with Better UI & AI integration."
+          extras={
+            <Flex jb className="my-1 mr-1 mt-1" fw>
+              <Flex gap={3}>
+                <TechCard>Next.js</TechCard>
+                <TechCard>TypeScript</TechCard>
+              </Flex>
+              <Flex gap={3}>
+                <TechCard contained>
+                  <a
+                    href="https://7701-106-1-242-61.ngrok-free.app/"
+                    target="_blank"
+                  >
+                    Site
+                  </a>
+                </TechCard>
+              </Flex>
+            </Flex>
+          }
+        />
+        {/* Ptt */}
+        <MyItembox
+          hover={false}
+          icon={<TbWorldWww className="text-4xl" />}
+          title="VC Whiteboard"
+          description={
+            <>
+              Try to make sense of complex topics in{" "}
+              <a
+                className="underline"
+                href="https://scrollprize.org/"
+                target="_blank"
+              >
+                Vesuvius Challenge
+              </a>.
+            </>
+          }
+          extras={
+            <Flex jb className="my-1 mr-1 mt-1" fw>
+              <Flex gap={3}>
+                <TechCard>Three.js</TechCard>
+                <TechCard>React</TechCard>
+                <TechCard>Javascript</TechCard>
+              </Flex>
+              <Flex gap={3}>
+                <TechCard contained>
+                  <a
+                    href="https://github.com/tomhsiao1260/volume-viewer"
+                    target="_blank"
+                  >
+                    Github
+                  </a>
+                </TechCard>
+              </Flex>
+            </Flex>
+          }
+        />
+        {/* Ptt */}
+        <MyItembox
+          hover={false}
+          icon={<TbWorldWww className="text-4xl" />}
+          title="Nextjs.tw"
+          description="Next.js documentation in Traditional Chinese, maintained by the opensource community."
+          extras={
+            <Flex jb className="my-1 mr-1 mt-1" fw>
+              <Flex gap={3}>
+                <TechCard>Next.js</TechCard>
+                <TechCard>TypeScript</TechCard>
+                <TechCard>MDX</TechCard>
+              </Flex>
+              <Flex gap={3}>
+                <TechCard contained>
+                  <a
+                    href="https://github.com/yuaanlin/nextjs.tw"
+                    target="_blank"
+                  >
+                    Github
+                  </a>
+                </TechCard>
+                <TechCard contained>
+                  <a href="https://nextjs.tw/" target="_blank">
+                    Site
+                  </a>
+                </TechCard>
+              </Flex>
+            </Flex>
+          }
+        />
         {/* Ptt */}
         <MyItembox
           hover={false}
           icon={<TbWorldWww className="text-4xl" />}
           title="Ptt-third-party-client"
-          description="Brand new PTT third-party client, simple and fast"
+          description="Brand new PTT third-party client, simple and fast."
           extras={
             <Flex jb className="my-1 mr-1 mt-1" fw>
               <Flex gap={3}>
