@@ -26,7 +26,7 @@ export default function Page() {
               height="630"
               src="https://www.youtube.com/embed/E-Gv7YvVIO4?si=WksqiS4OsTiRKGHj"
               title="YouTube video player"
-              frameborder="0"
+       
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
@@ -44,7 +44,7 @@ export default function Page() {
             height="630"
             src="https://www.youtube.com/embed/GtL1huin9EE?si=236Qme2bYut_ntZk&rel=0&amp;autoplay=1"
             title="YouTube video player"
-            frameborder="0"
+       
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
