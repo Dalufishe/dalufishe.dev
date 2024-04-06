@@ -48,6 +48,6 @@ export default function Page() {
     </div>
   );
 }
-Page.getLayout = (page) => {
+Page.getLayout = (page: any) => {
   return <div>{page}</div>;
 };
