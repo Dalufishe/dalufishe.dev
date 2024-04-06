@@ -6,15 +6,15 @@ export default function Page() {
   return (
     <div>
       <Head>
-        <title>fdjakfjdakfvjkajk</title>
-        <meta name="description" content="fdafj123kj4krjfkdsjfkjk4213" />
+        <title>palserver GUI 帕魯伺服器轉檔教學</title>
+        <meta name="description" content="palserver GUI 帕魯伺服器轉檔教學" />
         <meta property="og:url" content="https://dalufishe-dev.vercel.app/" />
         <meta property="og:type" content="website" />
+        <meta property="og:title" content="palserver GUI 帕魯伺服器轉檔教學" />
         <meta
-          property="og:title"
-          content="Hm, it looks like that file might've been a virus. Instead of cooking up trouble, try cooking up a Slow-Cooked Pulled Pork SlidersHm, it looks like that file might've been a virus. Instead of cooking up trouble, try cooking up a Slow-Cooked Pulled Pork SlidersHm, it looks like that file might've been a virus. Instead of cooking up trouble, try cooking up a Slow-Cooked Pulled Pork SlidersHm, it looks like that file might've been a virus. Instead of cooking up trouble, try cooking up a Slow-Cooked Pulled Pork Sliders"
+          property="og:description"
+          content="palserver GUI 帕魯伺服器轉檔教學"
         />
-        <meta property="og:description" content="fdafa21313131ds124" />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
